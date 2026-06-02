@@ -24,7 +24,11 @@ export const tasks = [
     title: '歯ブラシ交換',
     place: { emoji: '🪥', label: '洗面', colorKey: 'sink' },
     time: { emoji: '⚡', label: '即時' },
-    detail: null,
+    detail: `古い歯ブラシで捨てる前にひと仕事！
+1. サッシの溝をこすり洗い
+2. スニーカーの底をこすり洗い
+3. 蛇口の根元の細かい汚れをこすり洗い
+4. そのまま捨てる`,
   },
   // 🚽 トイレ
   {
