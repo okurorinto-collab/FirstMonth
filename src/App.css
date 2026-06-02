@@ -8,14 +8,16 @@
   --color-sink:    #E4F4FF;
   --color-toilet:  #F0E4FF;
   --color-laundry: #E4FFF4;
-  --color-kitchen: #FFF4E4;
+  --color-kitchen:  #FFF4E4;
+  --color-entrance: #FFF0DC;
 
   /* Accent borders */
-  --accent-bath:    #F9A8D4;
-  --accent-sink:    #93C5FD;
-  --accent-toilet:  #C4B5FD;
-  --accent-laundry: #6EE7B7;
-  --accent-kitchen: #FCD34D;
+  --accent-bath:     #F9A8D4;
+  --accent-sink:     #93C5FD;
+  --accent-toilet:   #C4B5FD;
+  --accent-laundry:  #6EE7B7;
+  --accent-kitchen:  #FCD34D;
+  --accent-entrance: #D4A96A;
 
   /* Typography */
   --font: 'Noto Sans JP', 'Nunito', system-ui, sans-serif;
@@ -166,7 +168,8 @@ button {
 .task-card[data-place="sink"]    { background: var(--color-sink); }
 .task-card[data-place="toilet"]  { background: var(--color-toilet); }
 .task-card[data-place="laundry"] { background: var(--color-laundry); }
-.task-card[data-place="kitchen"] { background: var(--color-kitchen); }
+.task-card[data-place="kitchen"]  { background: var(--color-kitchen); }
+.task-card[data-place="entrance"] { background: var(--color-entrance); }
 
 .task-card[role="button"] { cursor: pointer; }
 .task-card[role="button"]:active { transform: scale(0.98); }
@@ -267,7 +270,8 @@ button {
 .tag-badge--place[data-place="sink"]    { border-color: var(--accent-sink); }
 .tag-badge--place[data-place="toilet"]  { border-color: var(--accent-toilet); }
 .tag-badge--place[data-place="laundry"] { border-color: var(--accent-laundry); }
-.tag-badge--place[data-place="kitchen"] { border-color: var(--accent-kitchen); }
+.tag-badge--place[data-place="kitchen"]  { border-color: var(--accent-kitchen); }
+.tag-badge--place[data-place="entrance"] { border-color: var(--accent-entrance); }
 
 .tag-badge--time {
   background: rgba(255,255,255,0.5);
@@ -397,7 +401,8 @@ button {
 .detail-step[data-place="sink"]    { border-color: var(--accent-sink); }
 .detail-step[data-place="toilet"]  { border-color: var(--accent-toilet); }
 .detail-step[data-place="laundry"] { border-color: var(--accent-laundry); }
-.detail-step[data-place="kitchen"] { border-color: var(--accent-kitchen); }
+.detail-step[data-place="kitchen"]  { border-color: var(--accent-kitchen); }
+.detail-step[data-place="entrance"] { border-color: var(--accent-entrance); }
 
 /* ── Responsive / Mobile polish ─────────────────────── */
 @media (max-width: 400px) {

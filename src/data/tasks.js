@@ -88,4 +88,24 @@ export const tasks = [
 5. 2時間放置
 6. 栓を外してお湯を流し、スポンジで軽く磨く`,
   },
+  // 🚪 玄関
+  {
+    id: 'shoes-tidy',
+    title: '靴をしまう',
+    place: { emoji: '🚪', label: '玄関', colorKey: 'entrance' },
+    time: { emoji: '⚡', label: '即時' },
+    detail: `1. 出しっぱなしの靴をすべて靴箱へ
+2. ついでに見直し：サイズアウト・ボロボロで履いていない靴があれば1足だけ捨てる
+　→ 靴箱に余裕が生まれてすっきり！`,
+  },
+  {
+    id: 'entrance-tidy',
+    title: 'カバン・持ち物をしまう',
+    place: { emoji: '🚪', label: '玄関', colorKey: 'entrance' },
+    time: { emoji: '⚡', label: '即時' },
+    detail: `玄関に置きっぱなしのものを本来の場所へ！
+1. バッグ・上着を部屋へ
+2. 届いた宅配便の段ボールを処理・部屋へ
+3. その他の置きっぱなしを一掃`,
+  },
 ]
