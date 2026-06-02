@@ -1,13 +1,6 @@
 export const tasks = [
   // 🚿🛁 お風呂
   {
-    id: 'drain-mold',
-    title: '排水口にカビキラー',
-    place: { emoji: '🚿', label: 'お風呂', colorKey: 'bath' },
-    time: { emoji: '⏱️', label: '5分' },
-    detail: null,
-  },
-  {
     id: 'bath-oxy',
     title: 'お風呂グッズのオキシ漬け',
     place: { emoji: '🛁', label: 'お風呂', colorKey: 'bath' },
@@ -19,6 +12,13 @@ export const tasks = [
 5. 翌朝、スポンジで軽くこすって流す`,
   },
   // 🪥 洗面
+  {
+    id: 'drain-mold',
+    title: '排水口にカビキラー',
+    place: { emoji: '🪥', label: '洗面', colorKey: 'sink' },
+    time: { emoji: '⏱️', label: '5分' },
+    detail: null,
+  },
   {
     id: 'toothbrush',
     title: '歯ブラシ交換',
