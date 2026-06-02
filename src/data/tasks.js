@@ -47,13 +47,6 @@ export const tasks = [
   },
   // 🧺 洗濯
   {
-    id: 'washer-mold',
-    title: '洗濯槽用カビキラーで樽洗浄',
-    place: { emoji: '🧺', label: '洗濯', colorKey: 'laundry' },
-    time: { emoji: '⏱️', label: '1時間' },
-    detail: null,
-  },
-  {
     id: 'washer-oxy',
     title: '縦型洗濯機のオキシ漬け',
     place: { emoji: '🧺', label: '洗濯', colorKey: 'laundry' },
