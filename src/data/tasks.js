@@ -31,7 +31,7 @@ export const tasks = [
     id: 'toilet-tank',
     title: 'トイレタンクのオキシ漬け',
     place: { emoji: '🚽', label: 'トイレ', colorKey: 'toilet' },
-    time: { emoji: '⏱️', label: '2時間〜半日' },
+    time: { emoji: '⏱️', label: '半日' },
     detail: `1. トイレを1回流す（タンク内の水を一度入れ替える）
 2. タンク上部の手洗い器の穴から、オキシクリーンをスプーン1杯（約30〜40g）流し込む
 　※あらかじめコップ1杯のぬるま湯（40℃）に溶かしてから入れると効果アップ！
