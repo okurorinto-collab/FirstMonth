@@ -69,6 +69,17 @@ export const tasks = [
   },
   // 🍳 キッチン
   {
+    id: 'microwave-sesqui',
+    title: '電子レンジのセスキ蒸気パック',
+    place: { emoji: '🍳', label: 'キッチン', colorKey: 'kitchen' },
+    time: { emoji: '⏱️', label: '20分' },
+    detail: `⚠️ アルミ製のトレイ・網は事前に取り出しておく！
+1. コップにセスキ炭酸ソーダ水を入れて電子レンジで3分チン
+2. 扉を閉めたまま15分放置（蒸気が汚れにじわじわ染み込む）
+3. コップのセスキ水をキッチンペーパーに少し浸し、庫内を拭く（火傷注意！）
+4. 最後にきれいな水で固く絞った布で仕上げ拭き`,
+  },
+  {
     id: 'sink-oxy',
     title: 'シンクのオキシ漬け',
     place: { emoji: '🍳', label: 'キッチン', colorKey: 'kitchen' },
