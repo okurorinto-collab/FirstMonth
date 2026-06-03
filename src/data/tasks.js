@@ -67,16 +67,6 @@ export const monthlyTasks = [
 2. ついでに見直し：サイズアウト・ボロボロで履いていない靴があれば1足だけ捨てる
 　→ 靴箱に余裕が生まれてすっきり！`,
   },
-  {
-    id: 'entrance-tidy',
-    title: 'カバン・持ち物をしまう',
-    place: { emoji: '🚪', label: '玄関', colorKey: 'entrance' },
-    time: { emoji: '⚡', label: '即時' },
-    detail: `玄関に置きっぱなしのものを本来の場所へ！
-1. バッグ・上着を部屋へ
-2. 届いた宅配便の段ボールを処理・部屋へ
-3. その他の置きっぱなしを一掃`,
-  },
   // 🚿🛁 お風呂
   {
     id: 'bath-oxy',
@@ -140,8 +130,7 @@ export const weeklyTasks = [
     time: { emoji: '⏱️', label: '5分' },
     detail: `1. 鏡をマイクロファイバークロスで乾拭き
 2. 蛇口・ハンドルの水垢をクエン酸スプレーで拭く
-3. 洗面ボウルをサッと洗う
-　→ ピカピカだと気分が上がる！`,
+3. 洗面ボウルをサッと洗う`,
   },
   // 🍳 キッチン
   {
@@ -178,6 +167,16 @@ export const weeklyTasks = [
     place: { emoji: '🚪', label: '玄関・床', colorKey: 'entrance' },
     time: { emoji: '⏱️', label: '15分' },
     detail: null,
+  },
+  {
+    id: 'entrance-tidy',
+    title: 'カバン・持ち物をしまう',
+    place: { emoji: '🚪', label: '玄関', colorKey: 'entrance' },
+    time: { emoji: '⚡', label: '即時' },
+    detail: `玄関に置きっぱなしのものを本来の場所へ！
+1. バッグ・上着を部屋へ
+2. 届いた宅配便の段ボールを処理・部屋へ
+3. その他の置きっぱなしを一掃`,
   },
 ]
 
