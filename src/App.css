@@ -225,7 +225,11 @@ button {
 }
 
 .card-accordion-inner {
+  min-height: 0;
   overflow: hidden;
+}
+
+.card-accordion-content {
   display: flex;
   flex-direction: column;
   gap: 5px;

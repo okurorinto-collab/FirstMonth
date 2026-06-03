@@ -79,15 +79,17 @@ export default function TaskCard({ task, isChecked, index, isExpanded, onToggle,
       {hasDetail && (
         <div className="card-accordion">
           <div className="card-accordion-inner">
-            {steps.map((line, i) => (
-              <p
-                key={i}
-                className="detail-step"
-                data-place={task.place.colorKey}
-              >
-                {line}
-              </p>
-            ))}
+            <div className="card-accordion-content">
+              {steps.map((line, i) => (
+                <p
+                  key={i}
+                  className="detail-step"
+                  data-place={task.place.colorKey}
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       )}
