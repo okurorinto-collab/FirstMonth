@@ -1,4 +1,4 @@
-export const tasks = [
+export const monthlyTasks = [
   // 🚿🛁 お風呂
   {
     id: 'bath-oxy',
@@ -109,3 +109,77 @@ export const tasks = [
 3. その他の置きっぱなしを一掃`,
   },
 ]
+
+export const weeklyTasks = [
+  // 🧺 洗濯
+  {
+    id: 'w-sheets',
+    title: 'シーツ・枕カバーの交換',
+    place: { emoji: '🧺', label: '洗濯', colorKey: 'laundry' },
+    time: { emoji: '⏱️', label: '10分' },
+    detail: `1. シーツ・枕カバー・布団カバーを外す
+2. 洗濯ネットに入れて洗濯機へ
+3. 新しいシーツ・カバーをセット
+　→ 週1回でダニ・汗じみ対策に！`,
+  },
+  // 🚽 トイレ
+  {
+    id: 'w-toilet',
+    title: 'トイレのブラシがけ＋床拭き',
+    place: { emoji: '🚽', label: 'トイレ', colorKey: 'toilet' },
+    time: { emoji: '⏱️', label: '5分' },
+    detail: `1. 便器内に洗剤をかけてブラシでこする
+2. 便座・フタ・レバーを除菌シートで拭く
+3. 床と便器の根元を拭く（黄ばみ・におい予防）`,
+  },
+  // 🪥 洗面
+  {
+    id: 'w-mirror',
+    title: '鏡・蛇口の水垢拭き',
+    place: { emoji: '🪥', label: '洗面', colorKey: 'sink' },
+    time: { emoji: '⏱️', label: '5分' },
+    detail: `1. 鏡をマイクロファイバークロスで乾拭き
+2. 蛇口・ハンドルの水垢をクエン酸スプレーで拭く
+3. 洗面ボウルをサッと洗う
+　→ ピカピカだと気分が上がる！`,
+  },
+  // 🍳 キッチン
+  {
+    id: 'w-sink-trap',
+    title: 'キッチン排水口のゴミ受け洗い',
+    place: { emoji: '🍳', label: 'キッチン', colorKey: 'kitchen' },
+    time: { emoji: '⏱️', label: '5分' },
+    detail: null,
+  },
+  {
+    id: 'w-fridge-check',
+    title: '冷蔵庫の中身チェック・期限切れ処分',
+    place: { emoji: '🍳', label: 'キッチン', colorKey: 'kitchen' },
+    time: { emoji: '⏱️', label: '10分' },
+    detail: `1. 賞味期限切れ・しなびた食材を処分
+2. 残り物を手前に出して「使い切りデー」を意識
+3. 汚れた棚をサッと拭く
+　→ 買い物前にやると無駄買い防止！`,
+  },
+  // 🛁 お風呂
+  {
+    id: 'w-bath-floor',
+    title: 'お風呂の床・排水口こすり',
+    place: { emoji: '🛁', label: 'お風呂', colorKey: 'bath' },
+    time: { emoji: '⏱️', label: '10分' },
+    detail: `1. 排水口のヘアキャッチャーの髪・ゴミを取る
+2. 床・壁の下のほうをブラシでこする（ピンク汚れ予防）
+3. 排水口まわりに泡スプレーをかけて流す`,
+  },
+  // 🚪 玄関・床
+  {
+    id: 'w-floor',
+    title: '床の掃除機・拭き掃除',
+    place: { emoji: '🚪', label: '玄関・床', colorKey: 'entrance' },
+    time: { emoji: '⏱️', label: '15分' },
+    detail: null,
+  },
+]
+
+// 後方互換: 既存の import { tasks } を壊さないため
+export const tasks = monthlyTasks

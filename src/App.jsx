@@ -1,40 +1,101 @@
 import { useState, useEffect } from 'react'
-import { tasks } from './data/tasks.js'
+import { monthlyTasks, weeklyTasks } from './data/tasks.js'
 import Header from './components/Header.jsx'
 import TaskCard from './components/TaskCard.jsx'
 import DetailSheet from './components/DetailSheet.jsx'
 
+const STORAGE_KEYS = {
+  monthly: 'fm-checked-monthly',
+  weekly: 'fm-checked-weekly',
+}
+
+const TAB_META = {
+  monthly: { title: '毎月のお掃除', sub: '月イチルーティン', tasks: monthlyTasks },
+  weekly: { title: '毎週のお掃除', sub: '週イチルーティン', tasks: weeklyTasks },
+}
+
+function loadChecked(key) {
+  try {
+    const saved = localStorage.getItem(key)
+    return saved ? new Set(JSON.parse(saved)) : new Set()
+  } catch {
+    return new Set()
+  }
+}
+
 export default function App() {
-  const [checked, setChecked] = useState(() => {
-    try {
-      const saved = localStorage.getItem('fm-checked')
-      return saved ? new Set(JSON.parse(saved)) : new Set()
-    } catch {
-      return new Set()
-    }
+  const [tab, setTab] = useState(() => {
+    const saved = localStorage.getItem('fm-tab')
+    return saved === 'weekly' ? 'weekly' : 'monthly'
   })
+
+  const [checkedMap, setCheckedMap] = useState(() => ({
+    monthly: loadChecked(STORAGE_KEYS.monthly),
+    weekly: loadChecked(STORAGE_KEYS.weekly),
+  }))
+
   const [openTaskId, setOpenTaskId] = useState(null)
 
   useEffect(() => {
-    localStorage.setItem('fm-checked', JSON.stringify([...checked]))
-  }, [checked])
+    localStorage.setItem('fm-tab', tab)
+  }, [tab])
+
+  useEffect(() => {
+    localStorage.setItem(
+      STORAGE_KEYS[tab],
+      JSON.stringify([...checkedMap[tab]])
+    )
+  }, [checkedMap, tab])
 
   function toggle(id) {
-    setChecked(prev => {
-      const next = new Set(prev)
+    setCheckedMap(prev => {
+      const next = new Set(prev[tab])
       next.has(id) ? next.delete(id) : next.add(id)
-      return next
+      return { ...prev, [tab]: next }
     })
   }
 
-  const openTask = tasks.find(t => t.id === openTaskId) ?? null
+  function switchTab(nextTab) {
+    if (nextTab === tab) return
+    setOpenTaskId(null)
+    setTab(nextTab)
+  }
+
+  const meta = TAB_META[tab]
+  const activeTasks = meta.tasks
+  const checked = checkedMap[tab]
+  const openTask = activeTasks.find(t => t.id === openTaskId) ?? null
 
   return (
     <div className="app">
-      <Header total={tasks.length} doneCount={checked.size} />
+      <Header
+        title={meta.title}
+        sub={meta.sub}
+        total={activeTasks.length}
+        doneCount={checked.size}
+      />
+
+      <nav className="tab-bar" role="tablist" aria-label="リストの切り替え">
+        <button
+          className={`tab ${tab === 'monthly' ? 'active' : ''}`}
+          role="tab"
+          aria-selected={tab === 'monthly'}
+          onClick={() => switchTab('monthly')}
+        >
+          🗓 月イチ
+        </button>
+        <button
+          className={`tab ${tab === 'weekly' ? 'active' : ''}`}
+          role="tab"
+          aria-selected={tab === 'weekly'}
+          onClick={() => switchTab('weekly')}
+        >
+          🔁 週イチ
+        </button>
+      </nav>
 
       <main className="task-list" aria-inert={openTaskId ? true : undefined}>
-        {tasks.map((task, i) => (
+        {activeTasks.map((task, i) => (
           <TaskCard
             key={task.id}
             task={task}
