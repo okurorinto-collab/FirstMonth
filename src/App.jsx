@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { monthlyTasks, weeklyTasks } from './data/tasks.js'
 import Header from './components/Header.jsx'
 import TaskCard from './components/TaskCard.jsx'
-import DetailSheet from './components/DetailSheet.jsx'
 
 const STORAGE_KEYS = {
   monthly: 'fm-checked-monthly',
@@ -34,7 +33,7 @@ export default function App() {
     weekly: loadChecked(STORAGE_KEYS.weekly),
   }))
 
-  const [openTaskId, setOpenTaskId] = useState(null)
+  const [expanded, setExpanded] = useState(() => new Set())
 
   useEffect(() => {
     localStorage.setItem('fm-tab', tab)
@@ -55,16 +54,23 @@ export default function App() {
     })
   }
 
+  function toggleExpand(id) {
+    setExpanded(prev => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
+  }
+
   function switchTab(nextTab) {
     if (nextTab === tab) return
-    setOpenTaskId(null)
+    setExpanded(new Set())
     setTab(nextTab)
   }
 
   const meta = TAB_META[tab]
   const activeTasks = meta.tasks
   const checked = checkedMap[tab]
-  const openTask = activeTasks.find(t => t.id === openTaskId) ?? null
 
   return (
     <div className="app">
@@ -94,23 +100,19 @@ export default function App() {
         </button>
       </nav>
 
-      <main className="task-list" aria-inert={openTaskId ? true : undefined}>
+      <main className="task-list">
         {activeTasks.map((task, i) => (
           <TaskCard
             key={task.id}
             task={task}
             isChecked={checked.has(task.id)}
+            isExpanded={expanded.has(task.id)}
             index={i}
             onToggle={() => toggle(task.id)}
-            onOpen={() => setOpenTaskId(task.id)}
+            onToggleExpand={() => toggleExpand(task.id)}
           />
         ))}
       </main>
-
-      <DetailSheet
-        task={openTask}
-        onClose={() => setOpenTaskId(null)}
-      />
     </div>
   )
 }

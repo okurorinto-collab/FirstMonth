@@ -181,16 +181,14 @@ button {
 
 .task-card {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
+  flex-direction: column;
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
-  cursor: default;
   animation: card-enter 0.4s ease both;
   animation-delay: var(--delay, 0ms);
-  transition: opacity 0.3s ease, transform 0.15s ease;
+  transition: opacity 0.3s ease;
   background: var(--bg-card);
+  overflow: hidden;
 }
 
 .task-card[data-place="bath"]    { background: var(--color-bath); }
@@ -200,10 +198,39 @@ button {
 .task-card[data-place="kitchen"]  { background: var(--color-kitchen); }
 .task-card[data-place="entrance"] { background: var(--color-entrance); }
 
-.task-card[role="button"] { cursor: pointer; }
-.task-card[role="button"]:active { transform: scale(0.98); }
-
 .task-card.checked { opacity: 0.6; }
+
+/* ── Card Main (header row) ─────────────────────────── */
+.card-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: default;
+  transition: transform 0.15s ease;
+}
+
+.card-main[role="button"] { cursor: pointer; }
+.card-main[role="button"]:active { transform: scale(0.98); }
+
+/* ── Accordion ──────────────────────────────────────── */
+.card-accordion {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.task-card.expanded .card-accordion {
+  grid-template-rows: 1fr;
+}
+
+.card-accordion-inner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 14px 14px;
+}
 
 /* ── Checkbox ───────────────────────────────────────── */
 .checkbox-btn {
@@ -315,113 +342,20 @@ button {
   flex-shrink: 0;
   padding-left: 4px;
   line-height: 1;
+  transition: transform 0.3s ease;
 }
 
-/* ── Backdrop ───────────────────────────────────────── */
-.backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(74, 63, 53, 0.35);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 10;
+.detail-arrow.open {
+  transform: rotate(90deg);
 }
 
-.backdrop.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* ── Detail Sheet ───────────────────────────────────── */
-.detail-sheet {
-  position: fixed;
-  inset: auto 0 0 0;
-  max-width: 480px;
-  margin: 0 auto;
-  max-height: 82dvh;
-  transform: translateY(100%);
-  transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
-  border-radius: var(--radius-sheet);
-  background: #FFFFFF;
-  box-shadow: var(--shadow-sheet);
-  overflow-y: auto;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-}
-
-.detail-sheet.open {
-  transform: translateY(0);
-}
-
-.sheet-handle {
-  width: 40px;
-  height: 4px;
-  background: #E5D5C8;
-  border-radius: 100px;
-  margin: 12px auto 0;
-  flex-shrink: 0;
-}
-
-.sheet-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 20px 12px;
-  flex-shrink: 0;
-}
-
-.sheet-place-emoji {
-  font-size: 2rem;
-  flex-shrink: 0;
-}
-
-.sheet-title {
-  flex: 1;
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--text-primary);
-}
-
-.sheet-close {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #F3EDE8;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background 0.15s;
-}
-
-.sheet-close:hover { background: #EAE0DA; }
-
-.sheet-tags {
-  display: flex;
-  gap: 6px;
-  padding: 0 20px 14px;
-  flex-shrink: 0;
-}
-
-.sheet-detail {
-  padding: 4px 20px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  overflow-y: auto;
-}
-
+/* ── Detail Step (accordion body) ───────────────────── */
 .detail-step {
-  padding: 10px 14px;
-  background: var(--bg-cream);
-  border-radius: 12px;
-  font-size: 0.88rem;
-  line-height: 1.75;
+  padding: 7px 11px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+  font-size: 0.74rem;
+  line-height: 1.65;
   color: var(--text-primary);
   border-left: 3px solid #E5D5C8;
 }
